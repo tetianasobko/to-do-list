@@ -1,7 +1,10 @@
-from django.urls import path, include
+from django.urls import path
+
+from tasks.views import Index
+
 
 urlpatterns = [
     path("", Index.as_view(), name="index"),
 ]
 
-appname = "tasks"
+app_name = "tasks"
