@@ -7,6 +7,9 @@ class Tag(models.Model):
     class Meta:
         ordering = ["name"]
 
+    def __str__(self):
+        return self.name
+
 
 class Task(models.Model):
     description = models.TextField()
@@ -17,3 +20,6 @@ class Task(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.description
