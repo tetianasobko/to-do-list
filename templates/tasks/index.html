@@ -30,9 +30,9 @@
           {% endif %}
           <p class="text-muted mb-1 small">Tags:
             {% for tag in task.tags.all %}
-              {{ tag.name }} 
+              {{ tag.name }}
             {% endfor %}
-          </p>          
+          </p>
           <a href="{% url 'tasks:task-update' pk=task.id %}" class="btn btn-sm btn-outline-primary me-1">
             Update
           </a>
@@ -43,11 +43,13 @@
 
         <div class="d-flex align-items-center">
           {% if task.is_completed %}
-            <a href="#" class="btn btn-sm btn-secondary me-1">
+            <a href="{% url 'tasks:task-toggle' pk=task.id %}" 
+               class="btn btn-sm btn-secondary me-1">
               Undo
             </a>
           {% else %}
-            <a href="#" class="btn btn-sm btn-primary me-1">
+            <a href="{% url 'tasks:task-toggle' pk=task.id %}" 
+               class="btn btn-sm btn-success me-1">
               Complete
             </a>
           {% endif %}
