@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from tasks.forms import TaskForm
-from tasks.models import Task
+from tasks.models import Task, Tag
 
 
 class Index(generic.ListView):
@@ -39,3 +39,9 @@ def toggle_task(request, pk):
     task.is_completed = not task.is_completed
     task.save()
     return redirect("tasks:index")
+
+
+class TagListView(generic.ListView):
+    model = Tag
+    template_name = "tasks/tag_list.html"
+    context_object_name = "tag_list"
