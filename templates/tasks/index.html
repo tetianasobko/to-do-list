@@ -4,7 +4,8 @@
 {% block content %}
   <h1 class="d-flex justify-content-between align-items-center">
     TODO list
-    <a href="{% url 'tasks:task-create' %}" class="btn btn-primary link-to-page float-end">
+    <a href="{% url 'tasks:task-create' %}"
+       class="btn btn-primary link-to-page float-end">
       Add Task
     </a>
   </h1>
@@ -27,7 +28,11 @@
               Deadline: {{ task.deadline|date:"F j, Y, g:i a" }}
             </p>
           {% endif %}
-          <p class="text-muted mb-1 small">Tags: {{ task.tags }}</p>
+          <p class="text-muted mb-1 small">Tags:
+            {% for tag in task.tags.all %}
+              {{ tag.name }} 
+            {% endfor %}
+          </p>          
           <a href="#" class="btn btn-sm btn-outline-primary me-1">
             Update
           </a>
